@@ -117,7 +117,7 @@ def get_model_answers(
                 # some models may error out when generating long outputs
                 try:
                     output_ids = model.generate(
-                        torch.as_tensor(input_ids).cuda(),
+                        inputs_ids = torch.as_tensor(input_ids).cuda(),
                         do_sample=do_sample,
                         temperature=temperature,
                         max_new_tokens=max_new_token,
@@ -218,7 +218,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--max-new-token",
         type=int,
-        default=1024,
+        default=256,
         help="The maximum number of new generated tokens.",
     )
     parser.add_argument(
